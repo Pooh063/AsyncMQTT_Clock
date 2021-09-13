@@ -34,6 +34,7 @@ void onMqttConnect(bool sessionPresent) {
   mqttClient.publish((mqttPath + MQTT_SERVICE_INFO_PATH + "/Core").c_str(), 0, true, coreVersion.c_str()); // Output format: 2.5.2
   mqttClient.publish((mqttPath + MQTT_SERVICE_INFO_PATH + "/Build_date").c_str(), 0, true, BUILD_DATE);
   mqttClient.publish((mqttPath + MQTT_SERVICE_INFO_PATH + "/Flash_date").c_str(), 0, true, msgDATE);
+  mqttClient.publish((mqttPath + MQTT_SERVICE_INFO_PATH + "/Flash_size").c_str(), 0, true, (String(ESP.getFlashChipRealSize()/1024, DEC) + " KiB").c_str());
   mqttClient.publish((mqttPath + MQTT_SERVICE_INFO_PATH + "/Reset_Reason").c_str(), 0, true, ESP.getResetReason().c_str());
   mqttClient.publish((mqttPath + MQTT_SERVICE_INFO_PATH + "/SDK").c_str(), 0, true, ESP.getSdkVersion());
   mqttClient.publish((mqttPath + MQTT_SERVICE_INFO_PATH + "/FreeHeap").c_str(), 0, true, String(ESP.getFreeHeap(), DEC).c_str());
